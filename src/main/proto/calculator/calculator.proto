@@ -1,0 +1,41 @@
+syntax = "proto3";
+
+package calculus;
+
+option java_package = "com.maan.calculus";
+option java_multiple_files = true;
+option java_outer_classname = "CalculatorProtoClass";
+
+message SumMessage {
+  int32 first_number = 1;
+  int32 second_number = 2;
+}
+message NumberMessage {
+  int32 number = 1;
+}
+
+message SumResponse {
+  int32 sum = 1;
+}
+
+message PrimeResponse {
+  uint32 prime = 1;
+}
+
+message AverageResponse {
+  double average = 1;
+}
+
+message SqrtResponse {
+  double sqrt = 1;
+}
+
+service CalculatorService {
+  rpc sum(SumMessage) returns (SumResponse);
+  rpc primes(NumberMessage) returns (stream PrimeResponse);
+  rpc average(stream NumberMessage) returns (AverageResponse);
+  rpc max(stream NumberMessage) returns (stream NumberMessage);
+
+  //returns a Status.INVALID_ARGUMENT if the number is negative
+  rpc sqrt(NumberMessage) returns (SqrtResponse);
+}

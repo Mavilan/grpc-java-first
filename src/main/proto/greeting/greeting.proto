@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package greeting;
+
+option java_package = "com.maan.greeting";
+option java_multiple_files = true;
+
+message GreetingMessage {
+  string first_name = 1;
+}
+
+message GreetingResponse {
+  string result = 1;
+}
+
+service GreetingService {
+  rpc greet(GreetingMessage) returns(GreetingResponse);
+  rpc greetManyTimes(GreetingMessage) returns(stream GreetingResponse);
+  rpc longGreet(stream GreetingMessage) returns(GreetingResponse);
+  rpc greetingEveryone(stream GreetingMessage) returns(stream GreetingResponse);
+
+  rpc greetWithDeadLine(GreetingMessage) returns(GreetingResponse);
+}
