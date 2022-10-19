@@ -63,4 +63,4 @@ Para poder desplegar el componente hace falta lo siguientes requerimientos:
 
 ### Despliegue
 
-Se necesitan ejecutar los siguientes comandos en la temrinal del sistema:
+Utilizar la configuracion creada en intellij para el despliegue de los servicios.
